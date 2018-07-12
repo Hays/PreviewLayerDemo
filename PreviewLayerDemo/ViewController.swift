@@ -11,11 +11,14 @@ import AVFoundation
 
 class ViewController: NSViewController {
     
+    @IBOutlet weak var markView: NSView!
+    @IBOutlet weak var previewView: NSView!
     var previewLayer:AVCaptureVideoPreviewLayer?
     let session = AVCaptureSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        markView.layer?.backgroundColor = NSColor.red.cgColor
         
         // config capture session
         if let videoDevice = AVCaptureDevice.default(for: AVMediaType.video) {
@@ -29,7 +32,7 @@ class ViewController: NSViewController {
         }
 
         // config preview layer
-        let previewViewLayer = view.layer
+        let previewViewLayer = previewView.layer
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer?.connection?.automaticallyAdjustsVideoMirroring = false
         previewLayer?.connection?.isVideoMirrored = true

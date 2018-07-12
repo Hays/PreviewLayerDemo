@@ -708,7 +708,23 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="960" height="540"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CrQ-68-zJG">
+                                <rect key="frame" x="0.0" y="0.0" width="960" height="540"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcc-O4-imF">
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                </subviews>
+                            </customView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="markView" destination="wcc-O4-imF" id="P5D-Vc-yCd"/>
+                        <outlet property="previewView" destination="CrQ-68-zJG" id="dto-FM-Zdc"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
