@@ -1,2 +1,2 @@
 # PreviewLayerDemo
-使用AVFoundation提供的AVCaptureVideoPreviewLayer进行摄像头采集渲染Demo
+Mac应用使用AVFoundation提供的AVCaptureVideoPreviewLayer进行摄像头采集渲染Demo
