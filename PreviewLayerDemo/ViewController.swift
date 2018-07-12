@@ -7,13 +7,38 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ViewController: NSViewController {
+    
+    var previewLayer:AVCaptureVideoPreviewLayer?
+    let session = AVCaptureSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // config capture session
+        if let videoDevice = AVCaptureDevice.default(for: AVMediaType.video) {
+            session.beginConfiguration()
+            let videoInput = try? AVCaptureDeviceInput.init(device: videoDevice)
+            if videoDevice.supportsSessionPreset(session.sessionPreset) {
+                session.sessionPreset = AVCaptureSession.Preset.high
+            }
+            session.addInput(videoInput!)
+            session.commitConfiguration()
+        }
 
-        // Do any additional setup after loading the view.
+        // config preview layer
+        let previewViewLayer = view.layer
+        previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        previewLayer?.connection?.automaticallyAdjustsVideoMirroring = false
+        previewLayer?.connection?.isVideoMirrored = true
+        previewLayer?.frame = (previewViewLayer?.bounds)!
+        previewLayer?.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
+        previewViewLayer?.addSublayer(previewLayer!)
+        
+        // start capture
+        session.startRunning()
     }
 
     override var representedObject: Any? {
